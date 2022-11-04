@@ -18,7 +18,7 @@ if (isset($_POST['login'])) {
 
             $fetchedResult = mysqli_fetch_assoc($result);
             
-            if (password_Verify($pass, $fetchedResult['password'])){
+            if (password_verify($pass, $fetchedResult['password'])){
                 echo "Logged in!";
             } else {
                 
@@ -62,7 +62,6 @@ if (isset($_POST['register'])) {
     $sql = "INSERT INTO users(`name`, `username`, `email`, `password`) VALUES ('$name', '$username', '$email', '$pass')";
     if (mysqli_query($conn, $sql)){
         echo "User registered successfully!<br>";
-        echo $pass;
     } else {
         echo "Can't run query";
     }
